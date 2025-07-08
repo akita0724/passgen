@@ -23,7 +23,7 @@ new Command()
       5: Capital Letters Only
       `,
   )
-  .version('0.1.1')
+  .version('0.1.2')
   .option('-l, --length [length:number]', 'Length of the password', { default: default_length })
   .option('-n, --numbers [numbers:number]', 'Number of passwords to generate', { default: default_numbers })
   .option('-m, --mode <mode:number>', 'Type of password to generate', { default: default_mode })
@@ -31,7 +31,7 @@ new Command()
   .action((options) => {
     const mode = Number(options.mode);
     // Check if the mode is valid
-    if (mode < 0 || mode > 4) {
+    if (mode < 0 || mode > 5) {
       console.log('Invalid mode');
       return;
     }
