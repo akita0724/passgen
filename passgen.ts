@@ -19,9 +19,11 @@ new Command()
       1: Letters Only
       2: Letters and Numbers
       3: Letters and Symbols(↓ & others)
-      4: Letters and Symbols(.-_/)`
+      4: Letters and Symbols(.-_/)
+      5: Capital Letters Only
+      `,
   )
-  .version('0.1.0')
+  .version('0.1.1')
   .option('-l, --length [length:number]', 'Length of the password', { default: default_length })
   .option('-n, --numbers [numbers:number]', 'Number of passwords to generate', { default: default_numbers })
   .option('-m, --mode <mode:number>', 'Type of password to generate', { default: default_mode })
@@ -54,11 +56,14 @@ new Command()
         case 4: // Letters and Symbols(strict)
           console.log(gen(length, lowercase + uppercase + numbers + strict_symbols));
           break;
+        case 5: // Capital Letters Only
+          console.log(gen(length, uppercase));
+          break;
         default:
           console.log('Invalid mode');
           break;
       }
-    })
+    });
   })
   .parse(Deno.args);
 
@@ -67,4 +72,4 @@ const gen = (length: number, symbols: string): string => {
     return symbols[Math.floor(Math.random() * symbols.length)];
   }
   ).join('');
-}
+};

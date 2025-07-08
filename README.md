@@ -10,6 +10,6 @@ deno run passgen.ts
 ## インストール方法
 以下のコマンドでインストールできる
 ```
-deno install --force --name passgen passgen.ts
+deno install --force --name passgen --global passgen.ts
 ```
 その後は上のコマンド実行後に表示される通りに環境変数を追加する。
