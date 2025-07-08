@@ -21,9 +21,10 @@ new Command()
       3: Letters and Symbols(↓ & others)
       4: Letters and Symbols(.-_/)
       5: Capital Letters Only
+      6: Capital Letters and Numbers
       `,
   )
-  .version('0.1.2')
+  .version('0.1.3')
   .option('-l, --length [length:number]', 'Length of the password', { default: default_length })
   .option('-n, --numbers [numbers:number]', 'Number of passwords to generate', { default: default_numbers })
   .option('-m, --mode <mode:number>', 'Type of password to generate', { default: default_mode })
@@ -31,7 +32,7 @@ new Command()
   .action((options) => {
     const mode = Number(options.mode);
     // Check if the mode is valid
-    if (mode < 0 || mode > 5) {
+    if (mode < 0 || mode > 6) {
       console.log('Invalid mode');
       return;
     }
@@ -58,6 +59,9 @@ new Command()
           break;
         case 5: // Capital Letters Only
           console.log(gen(length, uppercase));
+          break;
+        case 6: // Capital Letters and Numbers
+          console.log(gen(length, uppercase + numbers));
           break;
         default:
           console.log('Invalid mode');
